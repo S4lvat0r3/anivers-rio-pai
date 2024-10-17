@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Pai!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        #content {
+            text-align: center;
+            display: none;
+        }
+
+        #message {
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        #confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        #startButton {
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        iframe {
+            margin-top: 20px;
+            width: 560px;
+            height: 315px;
+        }
+
+        @media (max-width: 768px) {
+            iframe {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button id="startButton" onclick="startCelebration()">Clique aqui para começar a festa!</button>
+
+    <div id="content">
+        <div id="message">Feliz Aniversário, Pai!</div>
+        <iframe id="video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+    <canvas id="confetti"></canvas>
+
+    <script>
+        function startCelebration() {
+            document.getElementById('startButton').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            // Exibir confetes
+            startConfetti();
+
+            // Inserir link do vídeo do YouTube
+            document.getElementById('video').src = "https://www.youtube.com/embed/tShUzHs_oFY";
+        }
+
+        // Animação de confetes
+        const confettiSettings = { target: 'confetti', max: 150, size: 1.2, animate: true };
+        const confetti = new ConfettiGenerator(confettiSettings);
+
+        function startConfetti() {
+            confetti.render();
+        }
+
+        function stopConfetti() {
+            confetti.clear();
+        }
+
+        // Confetti.js: https://www.cssscript.com/confetti-falling-animation/
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/gh/mathusummut/confetti.js/confetti.min.js"></script>
+
+</body>
+</html>
